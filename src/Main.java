@@ -37,7 +37,7 @@ public class Main {
             String word = scanner.nextLine().toUpperCase();
             cls();
 
-            while (correctGuesses < word.length()) {
+            while (true) {
                 System.out.println("\nMistakes: " + incorrectGuesses + " out of 13.");
 
                 System.out.println("Guesses: " + guessedLetters);
@@ -83,11 +83,13 @@ public class Main {
 
                 if (incorrectGuesses == 13) {
                     cls();
-                    System.out.println("\nVITAY! You lose! You didn't guess the secret word '" + word + "'!");
+                    System.out.println("\nVITAY! You lose! The secret word was '" + word + "'!\n");
+                    break;
+                } else if (correctGuesses == word.length()) {
+                    System.out.println("Huzzah! You guessed the secret word '" + word + "'! Congratulations!\n");
                     break;
                 }
             }
-            System.out.println("Huzzah! You guessed the secret word '" + word + "'! Congratulations!");
             System.out.print("Play another game? Enter any or no key if yes, `no` if you want to quit.");
         } while (!scanner.nextLine().equals("no"));
     }
